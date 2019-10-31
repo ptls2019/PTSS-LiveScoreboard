@@ -44,6 +44,7 @@ include("conn.php");
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><a href="about.php" class="nav-link">About</a></li>
           <li class="nav-item active"><a href="knockkfoot.php" class="nav-link">Match Schedule Football</a></li>
+          <li class="nav-item active"><a href="knockknet.php" class="nav-link">Match Schedule Netball</a></li>
           <li class="nav-item active"><a href="games.php" class="nav-link">Live Scoreboard</a></li>
           <li class="nav-item active"><a href="chooselog.php" class="nav-link">Login</a></li>
 
