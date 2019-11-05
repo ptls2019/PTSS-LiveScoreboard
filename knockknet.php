@@ -41,7 +41,6 @@ include("conn.php");
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
 	          <li class="nav-item active"><a href="about.php" class="nav-link">About</a></li>
-	          <li class="nav-item active"><a href="knockkfoot.php" class="nav-link">Match Schedule Football</a></li>
 	          <li class="nav-item active"><a href="chooselog.php" class="nav-link">Login</a></li>
 
 	        </ul>
@@ -72,7 +71,7 @@ include("conn.php");
           <td style="width:25%;"></td>
           <td style="width:25%;"></td>
     </tr>
-        <tr>
+        <tr><!-- row 1 -->
           <td>
             <?php
             $row=$result->fetch_object();
@@ -92,11 +91,11 @@ include("conn.php");
           <td></td>
           <td></td>
         </tr>
-        <tr>
+        <tr><!-- row 2 -->
           <td style="border-top: solid 1px; border-right: solid 1px;"><br></td>
           <td>
             <?php
-            $sql="SELECT * FROM teamp2 WHERE kumpulan=5";
+            $sql="SELECT * FROM teamp2 WHERE kumpulan=5 AND sport='netball'";
             $rs_p2k5=$conn->query($sql);
             if($rs_p2k5->num_rows){
               $row_p2k5=$rs_p2k5->fetch_object();
@@ -112,7 +111,7 @@ include("conn.php");
               }
               if($row_matap2k5->selesai_set2=='selesai'){
                 echo " + [S2=$row_matap2k5->steam_1set2] = " . ($row_matap2k5->steam_1set1 + $row_matap2k5->steam_1set2);
-                $mata_2p2k5.=  " + [S2=$row_matap2k5->steam_2set2] = " . ($row_matap2k5->steam_2set1 + $row_mata->steam_2set2);
+                $mata_2p2k5.=  " + [S2=$row_matap2k5->steam_2set2] = " . ($row_matap2k5->steam_2set1 + $row_matap2k5->steam_2set2);
               }
             }else{
               $team_2p2k5='';
@@ -123,13 +122,13 @@ include("conn.php");
           <td></td>
           <td></td>
         </tr>
-        <tr>
+        <tr><!-- row 3 -->
           <td style="border-bottom: solid 1px; border-right: solid 1px;"><br></td>
           <td style="border-top: solid 1px; border-right: solid 1px;"><br></td>
           <td></td>
           <td></td>
         </tr>
-        <tr>
+        <tr><!-- row 4 -->
           <td>
             <?php   
             echo $row->team_2;
@@ -143,10 +142,35 @@ include("conn.php");
             ?>
           </td>
           <td><br></td>
-          <td style="border-left: solid 1px;">JTMK</td>
+          <td style="border-left: solid 1px;">
+          <?php
+            $sql="SELECT * FROM teamp3 WHERE kumpulan=7 AND sport='netball'";
+            $rs_p3k7=$conn->query($sql);
+            if($rs_p3k7->num_rows){
+              $row_p3k7=$rs_p3k7->fetch_object();
+              echo $row_p3k7->team_1;
+              $team_2p3k7=$row_p3k7->team_2;
+
+              $mata_2p3k7='';
+              $sql="SELECT * FROM game_scorep3 WHERE game_id=$row_p3k7->game_id";
+              $row_matap3k7=$conn->query($sql)->fetch_object();
+              if($row_matap3k7->selesai_set1=='selesai'){
+                echo "[S1=$row_matap3k7->steam_1set1]";
+                $mata_2p3k7.="[S1=$row_matap3k7->steam_2set1]";
+              }
+              if($row_matap3k7->selesai_set2=='selesai'){
+                echo " + [S2=$row_matap3k7->steam_1set2] = " . ($row_matap3k7->steam_1set1 + $row_matap3k7->steam_1set2);
+                $mata_2p3k7.=  " + [S2=$row_matap3k7->steam_2set2] = " . ($row_matap3k7->steam_2set1 + $row_matap3k7->steam_2set2);
+              }
+            }else{
+              $team_2p3k7='';
+              $mata_2p3k7='';
+            }
+            ?>
+        </td>
           <td></td>
         </tr>
-        <tr>
+        <tr><!-- row 5 -->
           <td>
             <?php
             $row=$result->fetch_object();
@@ -165,23 +189,23 @@ include("conn.php");
           <td style="border-top: solid 1px; border-right: solid 1px; border-left: solid 1px;"></td>
           <td></td>
         </tr>
-        <tr>
+        <tr><!-- row 6 -->
           <td style="border-top: solid 1px; border-right: solid 1px;"><br></td>
           <td style="border-bottom: solid 1px; border-right: solid 1px;"></td>
           <td></td>
           <td style="border-left: solid 1px;"></td>
         </tr>
-        <tr>
+        <tr><!-- row 7 -->
           <td style="border-bottom: solid 1px; border-right: solid 1px;"><br></td>
           <td>
             <?php
-            echo $team_2p2k5;
+             echo $team_2p2k5.$mata_2p2k5;
             ?>
           </td>
           <td></td>
           <td style="border-left: solid 1px;"></td>
         </tr> 
-        <tr>
+        <tr><!-- row 8 -->
           <td> 
           <?php   
             echo $row->team_2;
@@ -196,9 +220,18 @@ include("conn.php");
           </td>
           <td></td>
           <td><br></td>
-          <td style="border-bottom: solid 1px; border-left: solid 1px">JTMK</td>
+          <td style="border-bottom: solid 1px; border-left: solid 1px">
+          <?php
+            $sql="SELECT * FROM teamp4 WHERE kumpulan=8 AND sport='netball'";
+            $rs_p4k8=$conn->query($sql);
+            if($rs_p4k8->num_rows){
+              $row_p4k8=$rs_p4k8->fetch_object();
+              echo $row_p4k8->team_1;
+            }
+           ?> 
+        </td>
         </tr>
-        <tr>
+        <tr><!-- row 9 -->
           <td>
           <?php
             $row=$result->fetch_object();
@@ -218,11 +251,11 @@ include("conn.php");
           <td></td>
           <td style="border-left: solid 1px;"></td>
         </tr>
-        <tr>
+        <tr><!-- row 10 -->
           <td style="border-top: solid 1px; border-right: solid 1px;"><br></td>
           <td>
           <?php
-            $sql="SELECT * FROM teamp2 WHERE kumpulan=6";
+            $sql="SELECT * FROM teamp2 WHERE kumpulan=6 AND sport='netball'";
             $rs_p2k6=$conn->query($sql);
             if($rs_p2k6->num_rows){
               $row_p2k6=$rs_p2k6->fetch_object();
@@ -238,7 +271,7 @@ include("conn.php");
               }
               if($row_matap2k6->selesai_set2=='selesai'){
                 echo " + [S2=$row_matap2k6->steam_1set2] = " . ($row_matap2k6->steam_1set1 + $row_matap2k6->steam_1set2);
-                $mata_2p2k6.=  " + [S2=$row_matap2k6->steam_2set2] = " . ($row_matap2k6->steam_2set1 + $row_mata->steam_2set2);
+                $mata_2p2k6.=  " + [S2=$row_matap2k6->steam_2set2] = " . ($row_matap2k6->steam_2set1 + $row_matap2k6->steam_2set2);
               }
             }else{
               $team_2p2k6='';
@@ -249,13 +282,13 @@ include("conn.php");
           <td></td>
           <td style="border-left: solid 1px;"></td>
         </tr>
-        <tr>
+        <tr><!-- row 11 -->
           <td style="border-bottom: solid 1px; border-right: solid 1px;"><br></td>
           <td style="border-top: solid 1px; border-right: solid 1px;"></td>
           <td></td>
           <td style="border-left: solid 1px;"></td>
         </tr>
-        <tr>
+        <tr><!-- row 12 -->
           <td>
           <?php   
             echo $row->team_2;
@@ -269,10 +302,14 @@ include("conn.php");
             ?>
           </td>
           <td></td>
-          <td style="border-bottom: solid 1px; border-right: solid 1px; border-left: solid 1px;"></td>
+          <td style="border-bottom: solid 1px; border-right: solid 1px; border-left: solid 1px;">
+          <?php
+          echo $team_2p3k7.$mata_2p3k7;
+            ?>
+        </td>
           <td></td>
         </tr>
-        <tr>
+        <tr><!-- row 13 -->
           <td>
           <?php
             $row=$result->fetch_object();
@@ -290,16 +327,16 @@ include("conn.php");
           </td>
           </td>
           <td></td>
-          <td style="border-left: solid 1px;">JPH</td>
+          <td style="border-left: solid 1px;"></td>
           <td></td>
         </tr>
-        <tr>
+        <tr><!-- row 14 -->
           <td style="border-top: solid 1px; border-right: solid 1px;"><br></td>
           <td style="border-bottom: solid 1px; border-right: solid 1px;"></td>
           <td></td>
           <td></td>
         </tr>
-        <tr>
+        <tr><!-- row 15 -->
           <td style="border-bottom: solid 1px; border-right: solid 1px;"><br></td>
           <td>
           <?php
@@ -309,7 +346,7 @@ include("conn.php");
           <td></td>
           <td></td>
         </tr>
-        <tr>
+        <tr><!-- row 16 -->
           <td>
           <?php   
             echo $row->team_2;
@@ -331,34 +368,30 @@ include("conn.php");
     }
     ?>
       
-      
-      
-      </body>
-      </html>
-      
 <div class="content">
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+
 
 </body>
 </html>

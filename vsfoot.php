@@ -88,7 +88,7 @@ include("conn.php");
 
             <?php
             $bill = 1;
-            $sql = "SELECT * FROM team  WHERE sport='Football'";
+            $sql = "SELECT * FROM team  WHERE sport='football'";
             $result = $conn->query($sql);
             echo $conn->error;
             while ($row = $result->fetch_object()) {

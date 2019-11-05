@@ -95,7 +95,7 @@ include("conn.php");
           <td style="border-top: solid 1px; border-right: solid 1px;"><br></td>
           <td>
             <?php
-            $sql="SELECT * FROM teamp2 WHERE kumpulan=5";
+            $sql="SELECT * FROM teamp2 WHERE kumpulan=5 AND sport='football'";
             $rs_p2k5=$conn->query($sql);
             if($rs_p2k5->num_rows){
               $row_p2k5=$rs_p2k5->fetch_object();
@@ -144,7 +144,7 @@ include("conn.php");
           <td><br></td>
           <td style="border-left: solid 1px;">
           <?php
-            $sql="SELECT * FROM teamp3 WHERE kumpulan=7";
+            $sql="SELECT * FROM teamp3 WHERE kumpulan=7 AND sport='football'";
             $rs_p3k7=$conn->query($sql);
             if($rs_p3k7->num_rows){
               $row_p3k7=$rs_p3k7->fetch_object();
@@ -222,7 +222,7 @@ include("conn.php");
           <td><br></td>
           <td style="border-bottom: solid 1px; border-left: solid 1px">
           <?php
-            $sql="SELECT * FROM teamp4 WHERE kumpulan=8";
+            $sql="SELECT * FROM teamp4 WHERE kumpulan=8 AND sport='football'";
             $rs_p4k8=$conn->query($sql);
             if($rs_p4k8->num_rows){
               $row_p4k8=$rs_p4k8->fetch_object();
@@ -255,7 +255,7 @@ include("conn.php");
           <td style="border-top: solid 1px; border-right: solid 1px;"><br></td>
           <td>
           <?php
-            $sql="SELECT * FROM teamp2 WHERE kumpulan=6";
+            $sql="SELECT * FROM teamp2 WHERE kumpulan=6 AND sport='football'";
             $rs_p2k6=$conn->query($sql);
             if($rs_p2k6->num_rows){
               $row_p2k6=$rs_p2k6->fetch_object();

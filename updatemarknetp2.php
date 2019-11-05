@@ -12,7 +12,7 @@ if($operasi=='tambah'){
     $mata=-1;
 }
 
-$sql="UPDATE game_score SET $steam=$steam+$mata WHERE game_id=$game_id";
+$sql="UPDATE game_scorep2 SET $steam=$steam+$mata WHERE game_id=$game_id";
 $conn->query($sql);
 #echo $sql,'<br>',$conn->error;exit;
-header("location: pointcontrolnet.php?game_id=$game_id");
+header("location: pointcontrolnetp2.php?game_id=$game_id");

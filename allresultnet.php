@@ -1,6 +1,3 @@
-<?php
-include("conn.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,96 +36,141 @@ include("conn.php");
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="choosevs.php" class="nav-link">Choose Game</a></li>
-	          <li class="nav-item active"><a href="gamesref.php" class="nav-link">Live Scoreboard</a></li>
-	          <li class="nav-item active"><a href="index.php" class="nav-link">Logout</a></li>
+	          <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
+	          <li class="nav-item active"><a href="about.php" class="nav-link">About</a></li>
+	          <li class="nav-item active"><a href="chooselog.php" class="nav-link">Login</a></li>
 
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
+    <!-- END nav -->
     <div class="container">
       <div class="row no-gutters slider-text align-items-end justify-content-center">
           <h1 class="mb-3 bread"></h1>
       </div>
-      <style>
-      table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 60%;
-        }
-        
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
+      <br /><br /><br /><br />
+    <center>
+
+        <style>
+          table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+          }
+
+          td,
+          th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
+
+          tr:nth-child(even) {
+            background-color: #dddddd;
+          }
         </style>
-        </head>
-        <body>
-    <br /><br /><br /><br />
-      <center>
-        <body>
-         <h2>Team List Football</h2>
-         <br><br />
-         <h2>Pusingan Ketiga</h2>
-         <br><br />  
+      </head>
 
-        
-        <table>
+      <body>
+
+      <h1> <th>NETBALL</th> </h1>
+
+
+        <h2> <th>Pusingan Pertama</th> </h2>
           
-            <?php
-            $bill = 1;
-            $sql = "SELECT * FROM teamp3  WHERE sport='football'";
-            $result = $conn->query($sql);
-            echo $conn->error;
-            while($row = $result->fetch_object()) {
-              $sql="SELECT * FROM game_scorep3 WHERE game_id=$row->game_id";
-              $rowselesai=$conn->query($sql)->fetch_object();
-              #echo $conn->error; echo $rowselesai->num_rows;
-                ?>
-                <tr>
-                    <td><?php echo $bill++; ?></td>
-                    <td><?php echo $row->team_1; ?></td>
-                    <td><?php echo $row->team_2; ?></td>
-                    <td>
-                    <?php
-                    if($rowselesai->selesai_set1=='belum'){
-                    ?>
-                    <button type="button" onclick="window.location='pointcontrolfootp3.php?game_id=<?php echo $row->game_id; ?>'">
-                      Set1
-                    </button>
-                    <?php
-                    }else{
-                      ?>
-                      <button type="button" disabled>set1 </button>
-                      <?php
-                    }
+          <table>
+  <tr>
+    <th>Team 1</th>
+    <th>Score</th>
+    <th>Team 2</th>
+    <th>Score</th>
+    <th>Win</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    
+  </tr>
+  <tr>
+    <td></td>
+    <td></td> 
+    <td></td>
+    <td></td>
+    <td></td>
+    
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    
+  </tr>
+        </table>
 
-                    if($rowselesai->selesai_set2=='belum'){
-                      ?>
-                      <button type="button" onclick="window.location='pointcontrolfoot2p3.php?game_id=<?php echo $row->game_id; ?>'">
-                        Set2
-                      </button>
-                      <?php
-                      }else{
-                        ?>
-                        <button type="button" disabled>set2 </button>
-                        <?php
-                      }
-                    ?>
-                    </td>
-                </tr>
-                <?php
-            }
-            ?>
-         
-        </table></center>
-            <!-- loader -->
+        <h3> <th>Pusingan Separuh Akhir</th> </h3>
+          
+          <table>
+  <tr>
+    <th>Team 1</th>
+    <th>Score</th>
+    <th>Team 2</th>
+    <th>Score</th>
+    <th>Win</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    
+  </tr>
+  <tr>
+    <td></td>
+    <td></td> 
+    <td></td>
+    <td></td>
+    <td></td>
+    
+  </tr>
+        </table>
+
+        <h2> <th>Pusingan Akhir</th> </h2>
+          
+          <table>
+  <tr>
+    <th>Team 1</th>
+    <th>Score</th>
+    <th>Team 2</th>
+    <th>Score</th>
+    <th>Win</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    
+  </tr>
+        </table>
+
+        <div class="content">
+  <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
       <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
@@ -150,6 +192,6 @@ include("conn.php");
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-</body>
 
+  </body>
 </html>

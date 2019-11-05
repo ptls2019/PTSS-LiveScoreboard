@@ -73,7 +73,7 @@ include("conn.php");
     <br /><br /><br /><br />
       <center>
         <body>
-         <h2>Team List Football</h2>
+         <h2>Team List Netball</h2>
          <br><br />
          <h2>Pusingan Ketiga</h2>
          <br><br />  
@@ -83,7 +83,7 @@ include("conn.php");
           
             <?php
             $bill = 1;
-            $sql = "SELECT * FROM teamp3  WHERE sport='football'";
+            $sql = "SELECT * FROM teamp3  WHERE sport='netball'";
             $result = $conn->query($sql);
             echo $conn->error;
             while($row = $result->fetch_object()) {
@@ -99,7 +99,7 @@ include("conn.php");
                     <?php
                     if($rowselesai->selesai_set1=='belum'){
                     ?>
-                    <button type="button" onclick="window.location='pointcontrolfootp3.php?game_id=<?php echo $row->game_id; ?>'">
+                    <button type="button" onclick="window.location='pointcontrolnetp3.php?game_id=<?php echo $row->game_id; ?>'">
                       Set1
                     </button>
                     <?php
@@ -111,7 +111,7 @@ include("conn.php");
 
                     if($rowselesai->selesai_set2=='belum'){
                       ?>
-                      <button type="button" onclick="window.location='pointcontrolfoot2p3.php?game_id=<?php echo $row->game_id; ?>'">
+                      <button type="button" onclick="window.location='pointcontrolnet2p3.php?game_id=<?php echo $row->game_id; ?>'">
                         Set2
                       </button>
                       <?php
