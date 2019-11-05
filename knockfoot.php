@@ -25,10 +25,11 @@ tr:nth-child(even) {
 
 <table>
   <tr>
-    <th>Team</th>
-    <th>G</th>
-    <th>P</th>
-    <th>W</th>
+    <th>Team 1</th>
+    <th>Score</th>
+    <th>Team 2</th>
+    <th>Score</th>
+    <th>Win/th>
   </tr>
   <tr>
     <td>JKE</td>
